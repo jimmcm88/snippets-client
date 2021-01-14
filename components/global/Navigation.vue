@@ -5,7 +5,7 @@
         :to="{ name: 'index'}"
         class="mr-10 flex-shrink-0"
       >
-        <img class="h-8" src="https://s3.amazonaws.com/s3.codecourse.com/code/snippets-logo/logo.svg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJL2KCCLOFDJUI4QA%2F20201216%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201216T083650Z&X-Amz-SignedHeaders=host&X-Amz-Expires=18000&X-Amz-Signature=194532fbe3742512da1c7d14efd3d693490d7573d9391788a9911dab64f58126" >
+        Home
       </nuxt-link>
 
       <button @click="mobileNavOpen = !mobileNavOpen" 
