@@ -20,7 +20,7 @@
     </div>
     <div class="container mx-auto px-6 lg:px-0">
       <h2 class="text-lg text-gray-600 font-medium mb-4">
-        1/1. {{ currentStep.title }}
+        {{ currentStepIndex + 1 }}/{{ steps.length }}. {{ currentStep.title }}
       </h2>
 
       <div class="flex flex-wrap lg:flex-nowrap">
@@ -34,7 +34,7 @@
           </div>
 
           <div class="bg-white p-8 rounded-lg text-gray-600 w-full mx-2">
-            {{ currentStep.body }}
+            <StepMarkdown :stepBody="currentStep.body"></StepMarkdown>
           </div>
 
           <div class="flex flex-row lg:flex-col order-first lg:order-last">
@@ -45,6 +45,7 @@
             </StepNavigationButton>
 
             <nuxt-link 
+              v-if="snippet.user.data.owner"
               :to="{
                 name: 'snippets-id-edit',
                 params: {
@@ -83,15 +84,20 @@
 </template>
 
 <script>
-import StepList from './components/StepList'
-import StepNavigationButton from './components/StepNavigationButton'
-import {orderBy as _orderBy} from 'lodash';
+import StepMarkdown from '@/components/snippets/StepMarkdown';
+import browseSnippet from '@/mixins/snippets/browseSnippet';
+import StepList from './components/StepList';
+import StepNavigationButton from './components/StepNavigationButton';
 
 export default {
   components: {
     StepList,
-    StepNavigationButton
+    StepNavigationButton,
+    StepMarkdown
   },
+  mixins: [
+    browseSnippet
+  ],
   head() {
     return {
       title: `${this.snippet.title || 'Untitled snippet'}`
@@ -111,31 +117,5 @@ export default {
       steps: snippet.data.steps.data
     }
   },
-  computed: {
-    orderedStepsAsc() {
-      return _orderBy(this.steps, 'order', 'asc');
-    },
-    orderedStepsDesc() {
-      return _orderBy(this.steps, 'order', 'desc');
-    },
-    firstStep() {
-      return this.orderedStepsAsc[0];
-    },
-    previousStep() {
-      return this.orderedStepsDesc.find(
-        (step) => step.order < this.currentStep.order
-      ) || null
-    },
-    nextStep() {
-      return this.orderedStepsAsc.find(
-        (step) => step.order > this.currentStep.order
-      ) || null
-    },
-    currentStep() {
-      return this.orderedStepsAsc.find(
-        (step) => step.uuid === this.$route.query.step
-      ) || this.firstStep
-    },
-  }
 }
 </script>

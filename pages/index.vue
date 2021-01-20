@@ -13,9 +13,6 @@ export default {
     return {
       titleTemplate: ''
     }
-  },
-  mounted() {
-    console.log(process.env);
   }
 }
 </script>

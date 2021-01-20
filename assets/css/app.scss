@@ -17,3 +17,10 @@ a {
 p {
   @apply text-gray-600 mb-6 leading-relaxed;
 }
+
+pre {
+  @apply break-all whitespace-pre-wrap;
+}
+
+@import 'vendor/hljs.scss';
+@import 'codemirror/lib/codemirror.css';
