@@ -12,7 +12,6 @@
   import StepMarkdown from '@/components/snippets/StepMarkdown';
 
   export default {
-
     components: {
       StepMarkdown
     },
