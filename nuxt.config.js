@@ -65,7 +65,8 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: process.env.API_URL
+    // baseURL: process.env.API_URL
+    baseUrl: 'https://snippets-api.test'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
