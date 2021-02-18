@@ -4,7 +4,7 @@
       <div class="container mx-auto px-6 lg:px-0 py-10 pb-16">
         <div>
           <h1 class="text-4xl text-gray-700 font-medium leading-tight mb-4">
-            {{ snippet.title }}
+            {{ snippet.title || 'Untitled Snippet' }}
           </h1>
 
           <div class="text-gray-600 text-sm">

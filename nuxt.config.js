@@ -1,10 +1,12 @@
 let env = require('dotenv').config();
 
 export default {
+  env: env.parsed,
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'Snippets by Codecourse',
-    titleTemplate: '%s | Snippets by Codecourse',
+    title: 'Snippets',
+    titleTemplate: '%s | Snippets',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,6 +25,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    //'~/plugins/algolia'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -41,6 +44,9 @@ export default {
   ],
 
   auth: {
+    redirect: {
+      login: '/auth/login',
+    },
     strategies: {
       local: {
         endpoints: {
@@ -65,12 +71,22 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    // baseURL: process.env.API_URL
-    baseUrl: 'https://snippets-api.test'
+    baseURL: process.env.API_URL
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    extractCSS: true
-  }
+    extractCSS: true,
+    transpile: ['vue-instantsearch', 'instantsearch.js/es'],
+  },
+
+  router: {
+    parseQuery(queryString) {
+      return require('qs').parse(queryString);
+    },
+    stringifyQuery(object) {
+      var queryString = require('qs').stringify(object);
+      return queryString ? '?' + queryString : '';
+    },
+  },
 }

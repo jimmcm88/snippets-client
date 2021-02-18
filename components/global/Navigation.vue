@@ -23,14 +23,14 @@
         <ul class="lg:flex items-center lg:h-16 lg:w-auto">
           <li>
             <nuxt-link 
-              :to="{ name: 'index' }"
+              :to="{ name: 'browse' }"
               class="text-lg lg:py-5 lg:px-3"
             >
               Browse
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="{name: 'index'}"
+            <nuxt-link :to="{name: 'search'}"
               class="text-lg lg:py-5 lg:px-3"
             >
               Search
@@ -47,7 +47,7 @@
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link :to="{name: 'index'}"
+              <nuxt-link to="/account"
                 class="text-lg lg:py-5 lg:px-3"
               >
                 {{$auth.user.name}}
@@ -73,7 +73,7 @@
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link :to="{name: 'index'}"
+              <nuxt-link to="/auth/register"
                 class="text-lg lg:py-5 lg:px-3"
               >
                 Create account

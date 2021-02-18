@@ -161,6 +161,10 @@ export default {
     }
   },
 
+  middleware: [
+    'auth'
+  ],
+
   computed: {
     lastSavedFormatted() {
       return moment(this.lastSaved).format('HH:mm:ss');
